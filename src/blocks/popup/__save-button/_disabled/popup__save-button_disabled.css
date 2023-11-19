@@ -4,6 +4,7 @@
   background: transparent;
   cursor: not-allowed;
 }
+
 .popup__save-button_disabled:hover {
   background: transparent;
 }
