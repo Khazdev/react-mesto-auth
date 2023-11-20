@@ -22,7 +22,6 @@ function Login({onLogin}) {
       <form
         className="authorization__form"
         onSubmit={handleSubmit}
-        noValidate
         name="register"
       >
         <h2 className="authorization__title">Вход</h2>

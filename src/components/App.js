@@ -15,6 +15,10 @@ import Register from "./Register";
 import Login from "./Login";
 import InfoTooltip from "./InfoTooltip";
 
+const ERROR_MESSAGE = "Что-то пошло не так! Попробуйте еще раз.";
+
+const SUCCESS_MESSAGE = "Вы успешно зарегистрировались!";
+
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -26,6 +30,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [email, setEmail] = useState("");
+  const [infoTooltipMessage, setInfoTooltipMessage] = useState("");
   const localLoggedIn = !!localStorage.getItem('loggedIn')
   const [isLoggedIn, setIsLoggedIn] = useState(localLoggedIn);
   const navigate = useNavigate();
@@ -41,22 +46,27 @@ function App() {
   }, [isLoggedIn, navigate]);
 
   useEffect(() => {
-    api
-      .getUserInfo()
-      .then((response) => {
-        setCurrentUser(response);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    if (isLoggedIn) {
+      api
+        .getUserInfo()
+        .then((response) => {
+          setCurrentUser(response);
+        })
+        .catch((error) => console.log(error));
+    }
+
+  }, [isLoggedIn]);
 
   useEffect(() => {
-    api
-      .getInitialCards()
-      .then((cardData) => {
-        setCards(cardData);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    if (isLoggedIn) {
+      api
+        .getInitialCards()
+        .then((cardData) => {
+          setCards(cardData);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [isLoggedIn]);
 
   const handleUpdateUser = ({name, about}) => {
     api
@@ -74,6 +84,7 @@ function App() {
     authApi.signUp(email, password)
       .then((res) => {
         setIsSuccessInfoTooltipStatus(true);
+        setInfoTooltipMessage(SUCCESS_MESSAGE)
         openInfoTooltip();
         setTimeout(() => {
           closeAllPopups();
@@ -81,9 +92,9 @@ function App() {
         }, 2000)
       })
       .catch((error) => {
-        console.log("response? catch")
         console.log(error);
         setIsSuccessInfoTooltipStatus(false);
+        setInfoTooltipMessage(ERROR_MESSAGE)
         openInfoTooltip();
       })
   }
@@ -102,6 +113,9 @@ function App() {
       })
       .catch((error) => {
         console.log(error);
+        setIsSuccessInfoTooltipStatus(false);
+        setInfoTooltipMessage(ERROR_MESSAGE)
+        openInfoTooltip();
       })
   }
 
@@ -249,6 +263,7 @@ function App() {
           isOpen={isInfoTooltipPopupOpen}
           onClose={closeAllPopups}
           isConfirmStatus={isSuccessInfoTooltipStatus}
+          message={infoTooltipMessage}
         />
 
         <Footer/>
