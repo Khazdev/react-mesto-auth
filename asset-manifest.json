@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/react-mesto-auth/static/css/main.8b83f18e.chunk.css",
+    "main.js": "/react-mesto-auth/static/js/main.8fc6daf3.chunk.js",
+    "main.js.map": "/react-mesto-auth/static/js/main.8fc6daf3.chunk.js.map",
+    "runtime~main.js": "/react-mesto-auth/static/js/runtime~main.0461446e.js",
+    "runtime~main.js.map": "/react-mesto-auth/static/js/runtime~main.0461446e.js.map",
+    "static/js/2.98e480e9.chunk.js": "/react-mesto-auth/static/js/2.98e480e9.chunk.js",
+    "static/js/2.98e480e9.chunk.js.map": "/react-mesto-auth/static/js/2.98e480e9.chunk.js.map",
+    "index.html": "/react-mesto-auth/index.html",
+    "precache-manifest.e886bb7e02677552e4842e5e3758274d.js": "/react-mesto-auth/precache-manifest.e886bb7e02677552e4842e5e3758274d.js",
+    "service-worker.js": "/react-mesto-auth/service-worker.js",
+    "static/css/main.8b83f18e.chunk.css.map": "/react-mesto-auth/static/css/main.8b83f18e.chunk.css.map",
+    "static/media/index.css": "/react-mesto-auth/static/media/edit-button.58afbe73.svg",
+    "static/media/logo.svg": "/react-mesto-auth/static/media/logo.7d7dbe54.svg",
+    "static/media/refuse.svg": "/react-mesto-auth/static/media/refuse.6063ab0d.svg",
+    "static/media/success.svg": "/react-mesto-auth/static/media/success.534aabc3.svg"
+  }
+}
