@@ -88,7 +88,7 @@ function App() {
         openInfoTooltip();
         setTimeout(() => {
           closeAllPopups();
-          navigate("/sign-in");
+          navigate("/sign-in", {replace: true});
         }, 2000)
       })
       .catch((error) => {
@@ -127,7 +127,7 @@ function App() {
           setEmail(res.data.email)
           localStorage.setItem('loggedIn', "true")
           setIsLoggedIn(true)
-          navigate('/')
+          navigate('/', {replace: true})
         })
         .catch((error) => {
           console.log(error);
